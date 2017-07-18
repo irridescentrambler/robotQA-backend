@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714105604) do
+ActiveRecord::Schema.define(version: 20170718164432) do
 
   create_table "robots", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20170714105604) do
     t.boolean "rusty"
     t.boolean "loose_screws"
     t.boolean "paint_scratched"
+    t.boolean "is_extinguished"
+    t.boolean "is_shipped"
   end
 
 end

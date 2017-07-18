@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # CORS enabled
 gem 'rack-cors'
+gem 'faker', '~> 1.8', '>= 1.8.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

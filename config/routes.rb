@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :robots do
     member do
       post 'extinguish'
+      post 'ship'
     end
 
     collection do
