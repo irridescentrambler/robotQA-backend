@@ -1,4 +1,6 @@
 class RobotsController < ApplicationController
+  before_action :set_robot, only: [:ship, :extinguish]
+
   def index
     @robots_to_extinguish = Robot.where(on_fire: true)
     @robots_to_recycle = Robot.recycle - @robots_to_extinguish
@@ -35,8 +37,6 @@ class RobotsController < ApplicationController
   end
 
   def extinguish
-    @robot = Robot.find(params[:id])
-
     respond_to do |format|
       if @robot.update(is_extinguished: true)
         format.json {
@@ -51,18 +51,20 @@ class RobotsController < ApplicationController
   end
 
   def ship
-    @robot = Robot.find(params[:id])
-    @robot.is_shipped = true
-    @robot.save
-    respond_to do |format|
-      format.json{
-        render json: { message: "#{ @robot.name } is successfully Shipped" }
-      }
+   respond_to do |format|
+      if @robot.update(is_shipped: true)
+        format.json {
+          render json: { message: "#{ @robot.name } is successfully shipped" }
+        }
+      else
+        format.json{
+          render json: { message: 'Error while updating.' }
+        }
+      end
     end
   end
 
-  def
-
-  def recycle
+  def set_robot
+    @robot = Robot.find(params[:id])
   end
 end
